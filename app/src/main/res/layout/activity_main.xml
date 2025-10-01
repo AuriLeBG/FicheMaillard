@@ -189,7 +189,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewCodePostal" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textViewVilleUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -199,6 +199,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textViewVille"
         app:layout_constraintTop_toBottomOf="@+id/textViewCodePostalUser" />
+
+    <Button
+        android:id="@+id/buttonAddress"
+        android:layout_width="416dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/modifier_adresse"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVilleUser"
+        tools:layout_editor_absoluteX="-7dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,4 +15,5 @@
     <string name="fiche_contact">FICHE CONTACT</string>
     <string name="inconnu">Inconnu</string>
     <string name="modifier_idendite">MODIFIER IDENDITÉ</string>
+    <string name="modifier_adresse">MODIFIER ADRESSE</string>
 </resources>
