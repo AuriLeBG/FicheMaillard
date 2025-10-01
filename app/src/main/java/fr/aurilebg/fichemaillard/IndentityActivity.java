@@ -20,7 +20,8 @@ public class IndentityActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_indentity);
 
-        Button button = findViewById(R.id.buttonOk);
+        Button buttonOk = findViewById(R.id.buttonOk);
+        Button buttonCancel = findViewById(R.id.buttonCancel);
 
         Intent intent = getIntent();
 
@@ -36,13 +37,19 @@ public class IndentityActivity extends AppCompatActivity {
         editTextPrenom.setText(prenom);
         editTextTelephone.setText(telephone);
 
-        button.setOnClickListener(v->{
+        buttonOk.setOnClickListener(v->{
             Intent result = new Intent();
 
             result.putExtra("fr.aurilebg.fichemaillard.nom", editTextNom.getText().toString());
             result.putExtra("fr.aurilebg.fichemaillard.prenom", editTextPrenom.getText().toString());
             result.putExtra("fr.aurilebg.fichemaillard.telephone", editTextTelephone.getText().toString());
             setResult(RESULT_OK, result);
+            finish();
+        });
+
+        buttonCancel.setOnClickListener( v-> {
+            Intent result = new Intent();
+            setResult(RESULT_CANCELED, result);
             finish();
         });
 

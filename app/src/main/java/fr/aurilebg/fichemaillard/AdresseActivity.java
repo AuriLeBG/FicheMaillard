@@ -26,7 +26,8 @@ public class AdresseActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_adresse);
 
-        Button button = findViewById(R.id.buttonOk);
+        Button buttonOk = findViewById(R.id.buttonOk);
+        Button buttonCancel = findViewById(R.id.buttonCancel);
 
         Intent intent = getIntent();
 
@@ -45,7 +46,7 @@ public class AdresseActivity extends AppCompatActivity {
         editTextCodePostal.setText(code_postal);
         editTextVille.setText(ville);
 
-        button.setOnClickListener(v->{
+        buttonOk.setOnClickListener(v->{
             Intent result = new Intent();
 
             result.putExtra("fr.aurilebg.fichemaillard.numero", editTextNumero.getText().toString());
@@ -53,6 +54,12 @@ public class AdresseActivity extends AppCompatActivity {
             result.putExtra("fr.aurilebg.fichemaillard.code_postal", editTextCodePostal.getText().toString());
             result.putExtra("fr.aurilebg.fichemaillard.ville", editTextVille.getText().toString());
             setResult(RESULT_OK, result);
+            finish();
+        });
+
+        buttonCancel.setOnClickListener( v-> {
+            Intent result = new Intent();
+            setResult(RESULT_CANCELED, result);
             finish();
         });
 
