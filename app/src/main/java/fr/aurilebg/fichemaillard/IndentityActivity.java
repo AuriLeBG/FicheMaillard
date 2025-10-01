@@ -1,6 +1,10 @@
 package fr.aurilebg.fichemaillard;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +19,33 @@ public class IndentityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_indentity);
+
+        Button button = findViewById(R.id.buttonOk);
+
+        Intent intent = getIntent();
+
+        String nom = intent.getStringExtra("fr.aurilebg.fichemaillard.nom");
+        String prenom = intent.getStringExtra("fr.aurilebg.fichemaillard.prenom");
+        String telephone = intent.getStringExtra("fr.aurilebg.fichemaillard.telephone");
+
+        EditText editTextNom = findViewById(R.id.editTextNom);
+        EditText editTextPrenom = findViewById(R.id.editTextPrenom);
+        EditText editTextTelephone = findViewById(R.id.editTextTelephone);
+
+        editTextNom.setText(nom);
+        editTextPrenom.setText(prenom);
+        editTextTelephone.setText(telephone);
+
+        button.setOnClickListener(v->{
+            Intent result = new Intent();
+
+            result.putExtra("fr.aurilebg.fichemaillard.nom", editTextNom.getText().toString());
+            result.putExtra("fr.aurilebg.fichemaillard.prenom", editTextPrenom.getText().toString());
+            result.putExtra("fr.aurilebg.fichemaillard.telephone", editTextTelephone.getText().toString());
+            setResult(RESULT_OK, result);
+            finish();
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
