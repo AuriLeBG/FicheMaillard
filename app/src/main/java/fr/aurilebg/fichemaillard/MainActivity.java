@@ -19,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Permet de set les textView en prennant en compte les "Inconnu"
     private void SetTextView(TextView editText, String value)
     {
         if(value == null || value.isEmpty())
@@ -35,17 +36,21 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == RESULT_OK){
-                        Intent data = result.getData();
+                    if(result.getResultCode() == RESULT_OK){ //On regarde si l'action à pas été cancel
+                        Intent data = result.getData(); //On récupere les data renvoyés par l'activité secondaire
                         assert data != null;
+
+                        // stockage des données récupérés dans les types qui nous intéresse
                         String nom = data.getStringExtra("fr.aurilebg.fichemaillard.nom");
                         String prenom = data.getStringExtra("fr.aurilebg.fichemaillard.prenom");
                         String telephone = data.getStringExtra("fr.aurilebg.fichemaillard.telephone");
 
+                        //récupére les textViews
                         TextView textViewNom = findViewById(R.id.textViewNomUser);
                         TextView textViewPrenom = findViewById(R.id.textViewPrenomUser);
                         TextView textViewTelephone = findViewById(R.id.textViewTelephoneUser);
 
+                        //edit les textViews avec les données récupérées
                         SetTextView(textViewNom, nom);
                         SetTextView(textViewPrenom, prenom);
                         SetTextView(textViewTelephone, telephone);
@@ -93,8 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
         buttonIdentity.setOnClickListener(v -> {
 
-            Intent intent = new Intent(MainActivity.this, IndentityActivity.class);
+            Intent intent = new Intent(MainActivity.this, IndentityActivity.class); // Création d'une intention pour l'activité secondaire
 
+
+            //Récupération des données depuis les textView
             TextView textViewNom = findViewById(R.id.textViewNomUser);
             TextView textViewPrenom = findViewById(R.id.textViewPrenomUser);
             TextView textViewTelephone = findViewById(R.id.textViewTelephoneUser);
@@ -103,9 +110,11 @@ public class MainActivity extends AppCompatActivity {
             String prenom = textViewPrenom.getText().toString();
             String telephone = textViewTelephone.getText().toString();
 
+            //Ajout des données dans l'intention pour pouvoir les récupérés dans l'activité secondaire
             intent.putExtra("fr.aurilebg.fichemaillard.nom", nom);
             intent.putExtra("fr.aurilebg.fichemaillard.prenom", prenom);
             intent.putExtra("fr.aurilebg.fichemaillard.telephone", telephone);
+
 
             mGetResultIdentity.launch(intent);
         });
