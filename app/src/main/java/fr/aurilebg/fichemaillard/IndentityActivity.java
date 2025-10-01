@@ -47,7 +47,7 @@ public class IndentityActivity extends AppCompatActivity {
         SetEditText(editTextNom, nom);
         SetEditText(editTextPrenom, prenom);
         SetEditText(editTextTelephone, telephone);
-        
+
         buttonOk.setOnClickListener(v->{
             Intent result = new Intent();
 

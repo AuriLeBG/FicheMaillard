@@ -4,7 +4,7 @@
     <string name="saisie_identite">SAISIE IDENTITE</string>
     <string name="nom">Nom:</string>
     <string name="prenom">Prénom:</string>
-    <string name="téléphone">Téléphone</string>
+    <string name="téléphone">Téléphone:</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="ville">Ville:</string>
