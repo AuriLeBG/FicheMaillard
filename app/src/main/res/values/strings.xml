@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">FicheMAILLARD</string>
+    <string name="TP3">TP3</string>
+    <string name="saisie_identite">SAISIE IDENTITE</string>
+    <string name="nom">Nom:</string>
+    <string name="prenom">Prénom:</string>
+    <string name="téléphone">Téléphone</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="ville">Ville:</string>
+    <string name="saisie_adresse">SAISIE ADRESSE</string>
+    <string name="numero">Numéro:</string>
+    <string name="rue">Rue:</string>
+    <string name="code_postal">Code Postal:</string>
+    <string name="fiche_contact">FICHE CONTACT</string>
+    <string name="inconnu">Inconnu</string>
+    <string name="modifier_idendite">MODIFIER IDENDITÉ</string>
+</resources>
