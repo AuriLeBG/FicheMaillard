@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,7 +19,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AdresseActivity extends AppCompatActivity {
 
-
+    private void SetEditText(EditText editText, String value)
+    {
+        if(value == null || value.equals(getString(R.string.inconnu)))
+        {
+            editText.setText("");
+        }
+        else {
+            editText.setText(value);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +51,10 @@ public class AdresseActivity extends AppCompatActivity {
         EditText editTextCodePostal = findViewById(R.id.editTextCodePostal);
         EditText editTextVille = findViewById(R.id.editTextVille);
 
-        editTextNumero.setText(numero);
-        editTextRue.setText(rue);
-        editTextCodePostal.setText(code_postal);
-        editTextVille.setText(ville);
+        SetEditText(editTextNumero, numero);
+        SetEditText(editTextRue, rue);
+        SetEditText(editTextCodePostal, code_postal);
+        SetEditText(editTextVille, ville);
 
         buttonOk.setOnClickListener(v->{
             Intent result = new Intent();

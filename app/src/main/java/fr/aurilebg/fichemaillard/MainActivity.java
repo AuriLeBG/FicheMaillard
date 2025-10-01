@@ -19,6 +19,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private void SetTextView(TextView editText, String value)
+    {
+        if(value == null || value.isEmpty())
+        {
+            editText.setText(getString(R.string.inconnu));
+        }
+        else {
+            editText.setText(value);
+        }
+    }
+
     private ActivityResultLauncher<Intent> mGetResultIdentity = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -27,22 +38,17 @@ public class MainActivity extends AppCompatActivity {
                     if(result.getResultCode() == RESULT_OK){
                         Intent data = result.getData();
                         assert data != null;
-                        String name = data.getStringExtra("fr.aurilebg.fichemaillard.nom");
+                        String nom = data.getStringExtra("fr.aurilebg.fichemaillard.nom");
                         String prenom = data.getStringExtra("fr.aurilebg.fichemaillard.prenom");
                         String telephone = data.getStringExtra("fr.aurilebg.fichemaillard.telephone");
-                        Toast.makeText(MainActivity.this,
-                                "Nom reçu : " + name +
-                                "prenom reçu : " + prenom +
-                                "telephone reçu : " + telephone,
-                                Toast.LENGTH_SHORT).show();
 
                         TextView textViewNom = findViewById(R.id.textViewNomUser);
                         TextView textViewPrenom = findViewById(R.id.textViewPrenomUser);
                         TextView textViewTelephone = findViewById(R.id.textViewTelephoneUser);
 
-                        textViewNom.setText(name);
-                        textViewPrenom.setText(prenom);
-                        textViewTelephone.setText(telephone);
+                        SetTextView(textViewNom, nom);
+                        SetTextView(textViewPrenom, prenom);
+                        SetTextView(textViewTelephone, telephone);
                     }
                 }
             }
@@ -66,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                         TextView textViewCodePostal = findViewById(R.id.textViewCodePostalUser);
                         TextView textViewVille = findViewById(R.id.textViewVilleUser);
 
-                        textViewNumero.setText(numero);
-                        textViewRue.setText(rue);
-                        textViewCodePostal.setText(code_postal);
-                        textViewVille.setText(ville);
+                        SetTextView(textViewNumero, numero);
+                        SetTextView(textViewRue, rue);
+                        SetTextView(textViewCodePostal, code_postal);
+                        SetTextView(textViewVille, ville);
                     }
                 }
             }

@@ -14,6 +14,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class IndentityActivity extends AppCompatActivity {
 
+    private void SetEditText(EditText editText, String value)
+    {
+        if(value == null || value.equals(getString(R.string.inconnu)))
+        {
+            editText.setText("");
+        }
+        else {
+            editText.setText(value);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +44,10 @@ public class IndentityActivity extends AppCompatActivity {
         EditText editTextPrenom = findViewById(R.id.editTextPrenom);
         EditText editTextTelephone = findViewById(R.id.editTextTelephone);
 
-        editTextNom.setText(nom);
-        editTextPrenom.setText(prenom);
-        editTextTelephone.setText(telephone);
-
+        SetEditText(editTextNom, nom);
+        SetEditText(editTextPrenom, prenom);
+        SetEditText(editTextTelephone, telephone);
+        
         buttonOk.setOnClickListener(v->{
             Intent result = new Intent();
 
